@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moja Gra na itch.io</title>
-    <script src="https://static.itch.io/api.js" type="text/javascript"></script>
+    <title>Kup moją grę na itch.io!</title>
+    <script type="text/javascript" src="https://static.itch.io/api.js"></script>
 </head>
 <body>
     <h1>Kup moją grę na itch.io!</h1>
-    <div class="itchio-buy-button" data-project="3753981" data-user="drug-dealer12"></div>
+    <button id="buy_button">Kup teraz!</button>
     <script type="text/javascript">
-      Itch.attachBuyButton(document.querySelector('.itchio-buy-button'));
+      Itch.attachBuyButton(document.getElementById("buy_button"), {
+        user: "drug-dealer12",
+        game: "schedule1test"
+      });
     </script>
 </body>
 </html>
