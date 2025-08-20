@@ -1,38 +1,34 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pobierz moją grę na itch.io!</title>
-    <style>
-        body {
-            background-color: #111;
-            color: #eee;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding-top: 50px;
-        }
-        h1 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-        iframe {
-            border: none;
-            box-shadow: 0 0 20px #0f0;
-        }
-        a {
-            color: #0f0;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Przekierowanie językowe</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Pobieranie danych o lokalizacji użytkownika
+      fetch("https://ipapi.co/json/")
+        .then(res => res.json())
+        .then(data => {
+          console.log(data); // przydatne do debugowania
+          // Jeśli użytkownik w Polsce → przekieruj na polską wersję
+          if (data.country === "PL") {
+            window.location.href = "pl/1.21.4.html";
+          } 
+          // Reszta świata → angielska wersja
+          else {
+            window.location.href = "en/1.21.4.html";
+          }
+        })
+        .catch(err => {
+          console.error("Błąd pobierania danych o IP:", err);
+          // Jeśli coś pójdzie nie tak → domyślnie angielski
+          window.location.href = "en/1.21.4.html";
+        });
+    });
+  </script>
 </head>
 <body>
-    <h1>Pobierz moją grę na itch.io!</h1>
-    <iframe src="https://itch.io/embed/3753981?dark=true" width="552" height="167">
-        <a href="https://drug-dealer12.itch.io/schedule1test">Schedule1TEST by Drug Dealer12</a>
-    </iframe>
+  <p>Ładowanie odpowiedniej wersji językowej strony...</p>
 </body>
 </html>
