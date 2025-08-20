@@ -6,23 +6,19 @@
   <link rel="stylesheet" href="style.css">
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // Pobieranie danych o lokalizacji użytkownika
       fetch("https://ipapi.co/json/")
         .then(res => res.json())
         .then(data => {
-          console.log(data); // przydatne do debugowania
-          // Jeśli użytkownik w Polsce → przekieruj na polską wersję
+          console.log(data);
           if (data.country === "PL") {
-            window.location.href = "pl/1.21.4.html";
+            window.location.href = "pl/MCModInstaller.html";
           } 
-          // Reszta świata → angielska wersja
           else {
-            window.location.href = "en/1.21.4.html";
+            window.location.href = "en/MCModInstaller.html";
           }
         })
         .catch(err => {
           console.error("Błąd pobierania danych o IP:", err);
-          // Jeśli coś pójdzie nie tak → domyślnie angielski
           window.location.href = "en/1.21.4.html";
         });
     });
